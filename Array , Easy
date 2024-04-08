@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        sort(g.begin(), g.end()); // Sort the greed factors
+        sort(s.begin(), s.end()); // Sort the cookie sizes
+        
+        int i = 0; // Pointer for children
+        int j = 0; // Pointer for cookies
+        int count = 0; // Count of satisfied children
+        
+        while (i < g.size() && j < s.size()) {
+            if (g[i] <= s[j]) {
+                // If the current cookie can satisfy the current child
+                count++;
+                i++; // Move to the next child
+            }
+            j++; // Move to the next cookie
+        }
+        
+        return count;
+    }
+};
